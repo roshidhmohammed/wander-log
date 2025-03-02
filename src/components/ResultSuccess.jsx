@@ -57,7 +57,7 @@ const ResultSuccess = () => {
           </div>
         </div>
 
-        <div className=" flex justify-center   mt-10 mx-40">
+        <div className=" flex justify-center   mt-10 sm:mx-40">
           <Link to="/profile">
             <Button name="View your score" />
           </Link>
