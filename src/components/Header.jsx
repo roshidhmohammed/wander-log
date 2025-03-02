@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
+import ErrorAlert from "./ErrorAlert";
 
 const Header = () => {
   const navigate = useNavigate();
-  //   const params = useSearchParams();
+  const [showAlert, setShowAlert] = useState(false);
   const [showMenuTab, setShowMenuTab] = useState(false);
   const isRegister = useSelector((store) => store.register.isRegister);
 
+  console.log(isRegister);
   const navItems = [
     { name: "WANDER_LOG", path: "/" },
     { name: "Home", path: "/" },
@@ -25,11 +27,30 @@ const Header = () => {
   };
 
   const handleNavItem = (path) => {
-    navigate(path);
-    setShowMenuTab(!showMenuTab);
+    if (path === "/game-experience" && isRegister === false) {
+      setShowAlert(true);
+    } else {
+      navigate(path);
+      setShowMenuTab(!showMenuTab);
+    }
+  };
+
+  const handleNavItemForLaptop = (path) => {
+    if (path === "/game-experience" && isRegister === false) {
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
+    } else {
+      navigate(path);
+      setShowMenuTab(!showMenuTab);
+    }
   };
   return (
     <div className=" z-50 shadow-md shadow-gray-00 fixed right-0 left-0 bg-[#02023f]  sm:px-10 py-5 font-serif text-gray-900  font-bold text-md">
+      {showAlert && (
+        <ErrorAlert message="Please register your account, before exploring the games" />
+      )}
       <div className="sm:flex justify-between hidden ">
         {navItems?.map((item) => (
           <button
@@ -40,7 +61,7 @@ const Header = () => {
                 : "text-gray-50 "
             }  font-serif  transition-transform   delay-500  hover:rounded-full  px-5 
                 hover:cursor-pointer rounded-full ease-in-out  transform              `}
-            onClick={() => navigate(`${item.path}`)}
+            onClick={() => handleNavItemForLaptop(item.path)}
           >
             {item.name}
           </button>
