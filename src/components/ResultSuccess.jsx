@@ -32,10 +32,10 @@ const ResultSuccess = () => {
     <div className="bg-[#F2EFE7] pt-28 h-screen">
       {showConfetti && <AnimateConfetti />}
       <div className=" flex flex-col justify-center  font-sans">
-        <div className=" text-center font-bold text-[30px]">
+        <div className=" text-center font-bold sm:text-[30px] text-[25px]">
           Congratulation for the right answer 🎉
         </div>
-        <div className=" flex justify-center flex-col  mt-10 mx-40">
+        <div className=" flex justify-center flex-col  mt-10 md:mx-40 sm:mx-10 mx-2">
           <h1 className=" font-bold text-[25px] ">Fun Facts:</h1>
           <div className="  rounded-lg drop-shadow-2xl p-5 bg-gray-100">
             <ul className=" list-disc ml-10">
@@ -46,7 +46,7 @@ const ResultSuccess = () => {
           </div>
         </div>
 
-        <div className=" flex justify-center flex-col  mt-10 mx-40">
+        <div className=" flex justify-center flex-col  mt-10 md:mx-40 sm:mx-10 mx-2">
           <h1 className=" font-bold text-[25px] ">Trivias:</h1>
           <div className="  rounded-lg drop-shadow-2xl p-5 bg-gray-100">
             <ul className=" list-disc ml-10">
